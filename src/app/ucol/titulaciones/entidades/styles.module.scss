@@ -1,0 +1,39 @@
+.cardContainer{
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+
+  .entityCard{
+    transition: all 0.3s ease;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    height: 200px;
+    width: 200px;
+
+    &:hover{
+      background-color: #fff;
+      border: 1px solid var(--accent-color);
+      cursor: pointer;
+
+      svg{
+        fill: var(--accent-color);
+      }
+    }
+
+    svg{
+      transition: all 0.3s ease;
+    }
+
+    p{
+      font-size: 1.6rem;
+    }
+  }
+}

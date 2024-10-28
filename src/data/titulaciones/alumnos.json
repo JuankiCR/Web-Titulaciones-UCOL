@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "ee6a932e-ad2d-472b-b9fd-582bb3f3b379",
+    "numeroCuenta": "20200271",
+    "nombre": "Juan Carlos Ceballos Ramirez",
+    "generacion": "2020-2024",
+    "carrera": "ICI",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "f67e6561-b1bf-4ca5-9f74-fad560c77a96",
+    "numeroCuenta": "20175584",
+    "nombre": "Gabriel Ochoa Pizano",
+    "generacion": "2020-2024",
+    "carrera": "ICI",
+    "facultad": "\tFIME"
+  }
+]

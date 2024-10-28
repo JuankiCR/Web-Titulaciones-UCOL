@@ -1,0 +1,64 @@
+.formTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.formWrapper{
+  .formInputWrapper{
+    display: flex;
+    flex-direction: column;
+
+    label{
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    input{
+      padding: 0.5rem;
+      font-size: 1rem;
+      background-color: #232323;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+  }
+
+  button{
+    transition: background-color 0.3s;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #0a0a0a;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover{
+      background-color: #333;
+    }
+  }
+
+  p{
+    font-size: 1rem;
+    text-align: center;
+
+    a{
+      color: #2e6ff0;
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 8px;
+
+      &:hover{
+        text-decoration: underline;
+      }
+
+      &:active,
+      &:visited,
+      &:focus{
+        color: #2e6ff0;
+      }
+    }
+  }
+}
