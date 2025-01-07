@@ -1,10 +1,162 @@
 [
   {
-    "_id": "fcce802c-8637-4cdc-8405-aabd6cab6078",
-    "numeroTrabajador": "2020071",
-    "nombre": "Juanki CR",
+    "_id": "257b965d-6670-49de-b55a-dd500c24536d",
+    "numeroTrabajador": "6451",
+    "nombre": "Ana Morales",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Medicina",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "2b746057-0b1c-4b98-930c-b335abf2ef7c",
+    "numeroTrabajador": "3623",
+    "nombre": "Carlos Rivera",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Psicología",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "2c8a4018-8e4a-456f-b86d-7951474326c5",
+    "numeroTrabajador": "6780",
+    "nombre": "Isabel López",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Medicina",
+    "rol": "Secretario"
+  },
+  {
+    "_id": "2a4aea2d-5c47-48e7-a19e-6f080b5e1ec4",
+    "numeroTrabajador": "2936",
+    "nombre": "Isabel López",
     "carrera": "ICI",
+    "facultad": "Facultad de Ingeniería",
+    "rol": "Vocal"
+  },
+  {
+    "_id": "37aba3a0-a66d-4be9-a8d1-1689a86dd7e1",
+    "numeroTrabajador": "2105",
+    "nombre": "Jorge Herrera",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Derecho",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "b08377f1-2d2b-4550-b412-ce223c19447a",
+    "numeroTrabajador": "6805",
+    "nombre": "Pedro Ramírez",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Psicología",
+    "rol": "Secretario"
+  },
+  {
+    "_id": "34e7f9ff-2e1a-4e27-935e-aa776e378f72",
+    "numeroTrabajador": "8647",
+    "nombre": "Sofía García",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Derecho",
+    "rol": "Suplente"
+  },
+  {
+    "_id": "86d6e7df-4982-4d15-abcf-74b514a8f1ec",
+    "numeroTrabajador": "1802",
+    "nombre": "Ana Morales",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Derecho",
+    "rol": "Vocal"
+  },
+  {
+    "_id": "4043cd04-f2d0-45aa-83f0-6adeca06ef7b",
+    "numeroTrabajador": "8501",
+    "nombre": "Fernando Pérez",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Medicina",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "f6f2c42e-3ae0-4c9e-a80f-18792015ff01",
+    "numeroTrabajador": "8003",
+    "nombre": "Fernando Pérez",
+    "carrera": "Psicología",
+    "facultad": "FIME",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "55bb4e10-7955-49ea-9b50-a14544411cb2",
+    "numeroTrabajador": "9222",
+    "nombre": "Isabel López",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Derecho",
+    "rol": "Vocal"
+  },
+  {
+    "_id": "ced75aa2-74c2-48ca-b969-ac5c785407a3",
+    "numeroTrabajador": "2131",
+    "nombre": "Luis Torres",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Psicología",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "02c556b2-73e4-4619-8ffd-4b57ad48d362",
+    "numeroTrabajador": "1723",
+    "nombre": "Jorge Herrera",
+    "carrera": "Ingeniería Civil",
     "facultad": "FIME",
     "rol": "Vocal"
+  },
+  {
+    "_id": "401b2629-768e-4d51-9065-b62c2b615c04",
+    "numeroTrabajador": "8693",
+    "nombre": "Sofía García",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Psicología",
+    "rol": "Vocal"
+  },
+  {
+    "_id": "ad8b77dc-0aab-4bd3-b18e-7e63022b6a5f",
+    "numeroTrabajador": "6412",
+    "nombre": "Isabel López",
+    "carrera": "ICI",
+    "facultad": "Facultad de Psicología",
+    "rol": "Vocal"
+  },
+  {
+    "_id": "1d904d3b-1efe-4614-b139-6158f8148a4f",
+    "numeroTrabajador": "1555",
+    "nombre": "Claudia Sánchez",
+    "carrera": "ICI",
+    "facultad": "Facultad de Psicología",
+    "rol": "Suplente"
+  },
+  {
+    "_id": "78b58ccb-e3d8-43d8-9a78-59987542b417",
+    "numeroTrabajador": "9033",
+    "nombre": "Isabel López",
+    "carrera": "ICI",
+    "facultad": "Facultad de Psicología",
+    "rol": "Suplente"
+  },
+  {
+    "_id": "9e3ea898-a7d8-472e-9b8b-405380ccbaca",
+    "numeroTrabajador": "5859",
+    "nombre": "Jorge Herrera",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Ingeniería",
+    "rol": "Suplente"
+  },
+  {
+    "_id": "7c4f89ce-7ab1-4d58-8a75-3ca08e8a225d",
+    "numeroTrabajador": "6916",
+    "nombre": "Pedro Ramírez",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Psicología",
+    "rol": "Presidente"
+  },
+  {
+    "_id": "10e38517-74df-47ee-8c19-d28ca09b2fc2",
+    "numeroTrabajador": "8871",
+    "nombre": "Mariana Gómez",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Derecho",
+    "rol": "Presidente"
   }
 ]

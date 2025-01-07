@@ -19,12 +19,13 @@
     width: 200px;
 
     &:hover{
-      background-color: #fff;
-      border: 1px solid var(--accent-color);
+      color: var(--btn-hover-alt);
+      background-color: #fefefe;
+      border: 1px solid var(--btn-hover-alt);
       cursor: pointer;
 
       svg{
-        fill: var(--accent-color);
+        fill: var(--btn-hover-alt);
       }
     }
 

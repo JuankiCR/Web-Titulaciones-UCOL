@@ -1,0 +1,209 @@
+[
+  {
+    "_id": "ed41c043-e68a-422b-b950-475ea7dc1255",
+    "modalidadId": "8f0f54c9-262b-470e-b9ea-76f1fab5db3c",
+    "estudiantes": [
+      {
+        "_id": "6f4b9d9a-a987-4b2c-9cb0-bd4b8ce6bf6a",
+        "numeroCuenta": "21201271",
+        "nombre": "Juan Carlos Ceballos Ramire",
+        "generacion": "2020-2024",
+        "carrera": "ICI",
+        "facultad": "FIME"
+      }
+    ],
+    "sinodales": [
+      {
+        "_id": "fcce802c-8637-4cdc-8405-aabd6cab6078",
+        "numeroTrabajador": "2020071",
+        "nombre": "Juanki CR",
+        "carrera": "ICI",
+        "facultad": "FIME",
+        "rol": "Vocal"
+      }
+    ],
+    "asesores": [
+      {
+        "_id": "11567ddf-9773-404c-816a-5ef30aa11ae3",
+        "numeroTrabajador": "8634",
+        "nombre": "Paula Moreno Test",
+        "carrera": "Ingeniería de Sistemas",
+        "facultad": "Facultad de Medicina"
+      }
+    ],
+    "documento": null,
+    "finalizada": false,
+    "fechaInicio": "2024-11-10",
+    "fechaFin": null
+  },
+  {
+    "_id": "ba973362-ab22-444c-b369-dfc078c07619",
+    "modalidadId": "8f0f54c9-262b-470e-b9ea-76f1fab5db3c",
+    "estudiantes": [
+      {
+        "_id": "6f4b9d9a-a987-4b2c-9cb0-bd4b8ce6bf6a",
+        "numeroCuenta": "21201271",
+        "nombre": "Juan Carlos Ceballos Ramire",
+        "generacion": "2020-2024",
+        "carrera": "ICI",
+        "facultad": "FIME"
+      }
+    ],
+    "sinodales": [
+      {
+        "_id": "fcce802c-8637-4cdc-8405-aabd6cab6078",
+        "numeroTrabajador": "2020071",
+        "nombre": "Juanki CR",
+        "carrera": "ICI",
+        "facultad": "FIME",
+        "rol": "Vocal"
+      }
+    ],
+    "asesores": [
+      {
+        "_id": "11567ddf-9773-404c-816a-5ef30aa11ae3",
+        "numeroTrabajador": "8634",
+        "nombre": "Paula Moreno Test",
+        "carrera": "Ingeniería de Sistemas",
+        "facultad": "Facultad de Medicina"
+      }
+    ],
+    "documento": null,
+    "finalizada": false,
+    "fechaInicio": "2024-11-10",
+    "fechaFin": null
+  },
+  {
+    "_id": "7bca0f60-ff7d-4247-beaa-729c8826e490",
+    "modalidadId": "8f0f54c9-262b-470e-b9ea-76f1fab5db3c",
+    "estudiantes": [
+      {
+        "_id": "f67e6561-b1bf-4ca5-9f74-fad560c77a96",
+        "numeroCuenta": "20175584",
+        "nombre": "Gabriel Ochoa Pizano",
+        "generacion": "2020-2024",
+        "carrera": "ICI",
+        "facultad": "\tFIME"
+      }
+    ],
+    "sinodales": [
+      {
+        "_id": "fcce802c-8637-4cdc-8405-aabd6cab6078",
+        "numeroTrabajador": "2020071",
+        "nombre": "Juanki CR",
+        "carrera": "ICI",
+        "facultad": "FIME",
+        "rol": "Vocal"
+      }
+    ],
+    "asesores": [
+      {
+        "_id": "11567ddf-9773-404c-816a-5ef30aa11ae3",
+        "numeroTrabajador": "8634",
+        "nombre": "Paula Moreno Test",
+        "carrera": "Ingeniería de Sistemas",
+        "facultad": "Facultad de Medicina"
+      }
+    ],
+    "documento": null,
+    "finalizada": false,
+    "fechaInicio": "2024-11-10",
+    "fechaFin": null
+  },
+  {
+    "_id": "9ff17870-b4bc-409e-ab8b-1b95cb533612",
+    "modalidadId": "8f0f54c9-262b-470e-b9ea-76f1fab5db3c",
+    "estudiantes": [
+      {
+        "_id": "f67e6561-b1bf-4ca5-9f74-fad560c77a96",
+        "numeroCuenta": "20175584",
+        "nombre": "Gabriel Ochoa Pizano",
+        "generacion": "2020-2024",
+        "carrera": "ICI",
+        "facultad": "\tFIME"
+      }
+    ],
+    "sinodales": [
+      {
+        "_id": "fcce802c-8637-4cdc-8405-aabd6cab6078",
+        "numeroTrabajador": "2020071",
+        "nombre": "Juanki CR",
+        "carrera": "ICI",
+        "facultad": "FIME",
+        "rol": "Vocal"
+      }
+    ],
+    "asesores": [
+      {
+        "_id": "11567ddf-9773-404c-816a-5ef30aa11ae3",
+        "numeroTrabajador": "8634",
+        "nombre": "Paula Moreno Test",
+        "carrera": "Ingeniería de Sistemas",
+        "facultad": "Facultad de Medicina"
+      }
+    ],
+    "documento": null,
+    "finalizada": false,
+    "fechaInicio": "2024-11-10",
+    "fechaFin": null
+  },
+  {
+    "_id": "3f619295-ed8b-4777-b31e-fcb10d1de2f2",
+    "modalidadId": "8f0f54c9-262b-470e-b9ea-76f1fab5db3c",
+    "estudiantes": [
+      {
+        "_id": "f67e6561-b1bf-4ca5-9f74-fad560c77a96",
+        "numeroCuenta": "20175584",
+        "nombre": "Gabriel Ochoa Pizano",
+        "generacion": "2020-2024",
+        "carrera": "ICI",
+        "facultad": "\tFIME"
+      },
+      {
+        "_id": "6f4b9d9a-a987-4b2c-9cb0-bd4b8ce6bf6a",
+        "numeroCuenta": "21201271",
+        "nombre": "Juan Carlos Ceballos Ramire",
+        "generacion": "2020-2024",
+        "carrera": "ICI",
+        "facultad": "FIME"
+      }
+    ],
+    "sinodales": [
+      {
+        "_id": "fcce802c-8637-4cdc-8405-aabd6cab6078",
+        "numeroTrabajador": "2020071",
+        "nombre": "Juanki CR",
+        "carrera": "ICI",
+        "facultad": "FIME",
+        "rol": "Vocal"
+      }
+    ],
+    "asesores": [
+      {
+        "_id": "c8372a2b-55d2-4a27-b6e7-6e1f95b5792d",
+        "numeroTrabajador": "7360",
+        "nombre": "David Gómez",
+        "carrera": "Derecho",
+        "facultad": "Facultad de Derecho"
+      },
+      {
+        "_id": "11567ddf-9773-404c-816a-5ef30aa11ae3",
+        "numeroTrabajador": "8634",
+        "nombre": "Paula Moreno Test",
+        "carrera": "Ingeniería de Sistemas",
+        "facultad": "Facultad de Medicina"
+      },
+      {
+        "_id": "7527db84-c059-4e10-b5ad-cc023919758c",
+        "numeroTrabajador": "4162",
+        "nombre": "Pedro Sánchez",
+        "carrera": "Ingeniería de Sistemas",
+        "facultad": "Facultad de Arquitectura"
+      }
+    ],
+    "documento": null,
+    "finalizada": false,
+    "fechaInicio": "2024-11-12",
+    "fechaFin": null
+  }
+]

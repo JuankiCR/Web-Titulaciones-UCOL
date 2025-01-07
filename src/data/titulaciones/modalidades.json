@@ -1,8 +1,56 @@
 [
   {
-    "_id": "8f0f54c9-262b-470e-b9ea-76f1fab5db3c",
+    "_id": "39bd1654-3b27-42a5-8a6a-d9fc8c067b45",
     "nombre": "Tesis",
-    "conDocumento": true,
+    "conDocumento": "true",
     "maximoEstudiantes": "3"
+  },
+  {
+    "_id": "e97fe5d9-bac1-4b1c-bdf4-7f5fb8886ca8",
+    "nombre": "Tesina",
+    "conDocumento": "true",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "1c7c26fa-79f5-4b3c-bb26-2f5415a5df1e",
+    "nombre": "Artículo de investigación",
+    "conDocumento": "true",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "699e1715-5a16-4f5c-aa33-bb0067f7d415",
+    "nombre": "Obra artística ",
+    "conDocumento": "true",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "cd1c8e13-d7ca-4489-9653-eb82d2e1fddd",
+    "nombre": "Sistematización de experiencia profesional",
+    "conDocumento": "true",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "3b68fd52-d486-4152-930e-ea6a0163cebe",
+    "nombre": "Examen general de egreso ",
+    "conDocumento": "false",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "40ab59ad-83f9-4ef1-8ef8-bed37654b0a8",
+    "nombre": "Desempeño académico sobresaliente",
+    "conDocumento": "false",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "03e724a7-1ae4-4cb9-b1ea-4dd25fc2c65d",
+    "nombre": "Certificación profesional ",
+    "conDocumento": "false",
+    "maximoEstudiantes": "1"
+  },
+  {
+    "_id": "d9d8698c-849c-4ef6-883e-8589b03b57e6",
+    "nombre": "Actualización de conocimientos",
+    "conDocumento": "false",
+    "maximoEstudiantes": "1"
   }
 ]

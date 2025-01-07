@@ -4,12 +4,15 @@
 
 :root {
   --background: #f7f7f7;
-  --foreground: #34495f;
+  --foreground: #333333;
   --foreground-white: #f7f7f7;
-  
+  --foreground-green: #ccdb94;
 
-  --accent-color: #669934;
-  --accent-alt-color: #1e2949;
+  --accent-color: #9f9ec8;
+  --accent-alt-color: #f5f8ea;
+
+  --btn-hover: #5f5ea3;
+  --btn-hover-alt: #ccdb94;
 }
 
 body {
@@ -20,6 +23,115 @@ body {
 
 .ucolMainContainer{
   overflow: auto;
+}
+
+/* ########## Inputs ########## */
+/* Selects */
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: var(--foreground-white);
+  color: var(--foreground);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* Files */
+input[type="file"] {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: var(--foreground-white);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="file"] {
+  background-color: var(--accent-color);
+  color: var(--foreground-white);
+  border: 1px solid var(--accent-color);
+}
+
+input[type="file"]:hover {
+  background-color: var(--btn-hover);
+}
+
+/* ########## Botones ########## */
+button{
+  width: 100%;
+}
+
+button.primary {
+  transition: all 0.3s ease; 
+  color: var(--foreground-white);
+  cursor: pointer;
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  margin-right: 10px;
+  padding: 10px 15px;
+}
+
+button.primary:hover {
+  color: var(--foreground-white);
+  background-color: var(--btn-hover);
+}
+
+button.secondary {
+  transition: all 0.3s ease; 
+  color: var(--foreground);
+  cursor: pointer;
+  background-color: var(--accent-alt-color);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  padding: 10px 15px;
+}
+
+button.secondary:hover {
+  color: var(--accent-alt-color);
+  background-color: var(--btn-hover-alt);
+}
+
+button.cancel {
+  padding: 10px 15px;
+  background-color: #f44336;
+  color: #f7f7f7;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.cancel:hover {
+  background-color: #d32f2f;
+}
+
+/* ########## Tablas ######### */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  text-align: left;
+}
+
+table th {
+  color: var(--foreground);
+  background-color: var(--accent-alt-color);
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 @layer utilities {

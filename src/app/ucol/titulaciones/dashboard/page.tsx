@@ -1,161 +1,210 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
+import { Bar, Pie } from "react-chartjs-2";
+import TableSkeleton from "@components/UCOL/ui/Skeletons/TableSkeleton";
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
 
 import styles from "./styles.module.scss";
 
-interface Alumno {
-  _id: string;
-  numeroCuenta: string;
-  nombre: string;
-  generacion: string;
-  carrera: string;
-  facultad: string;
-}
-
-interface Modalidad {
-  _id: string;
-  nombre: string;
-  conDocumento: boolean;
-  maximoEstudiantes: number;
-}
-
-interface Comite {
-  _id: string;
-  numeroTrabajador: string;
-  nombre: string;
-  carrera: string;
-  facultad: string;
-}
-
-interface Sinodal {
-  _id: string;
-  numeroTrabajador: string;
-  nombre: string;
-  carrera: string;
-  facultad: string;
-  rol: "Presidente/a" | "Secretario/a" | "Vocal";
-}
-
 export default function Dashboard() {
-  const [alumnos, setAlumnos] = useState<Alumno[]>([]);
-  const [modalidades, setModalidades] = useState<Modalidad[]>([]);
-  const [comite, setComite] = useState<Comite[]>([]);
-  const [sinodales, setSinodales] = useState<Sinodal[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [alumnosPorCarrera, setAlumnosPorCarrera] = useState<Record<string, number>>({});
+  const [alumnosPorGeneracion, setAlumnosPorGeneracion] = useState<Record<string, number>>({});
+  const [modalidadesPorTipo, setModalidadesPorTipo] = useState<Record<string, number>>({});
+  const [sinodalesPorFacultad, setSinodalesPorFacultad] = useState<Record<string, number>>({});
+  const [titulacionesPorModalidad, setTitulacionesPorModalidad] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    fetch("/api/titulaciones/alumnos")
-      .then((response) => response.json())
-      .then((data) => setAlumnos(data.slice(0, 5)));
+    Promise.all([
+      fetch("/api/titulaciones/dashboard/alumnos/por_carrera")
+        .then((response) => response.json())
+        .then((data) => setAlumnosPorCarrera(data)),
 
-    fetch("/api/titulaciones/modalidades")
-      .then((response) => response.json())
-      .then((data) => setModalidades(data.slice(0, 5)));
+      fetch("/api/titulaciones/dashboard/alumnos/por_generacion")
+        .then((response) => response.json())
+        .then((data) => setAlumnosPorGeneracion(data)),
 
-    fetch("/api/titulaciones/comite")
-      .then((response) => response.json())
-      .then((data) => setComite(data.slice(0, 5)));
+      fetch("/api/titulaciones/dashboard/modalidades/por_tipo")
+        .then((response) => response.json())
+        .then((data) => setModalidadesPorTipo(data)),
 
-    fetch("/api/titulaciones/sinodales")
-      .then((response) => response.json())
-      .then((data) => setSinodales(data.slice(0, 5)));
+      fetch("/api/titulaciones/dashboard/sinodales/por_facultad")
+        .then((response) => response.json())
+        .then((data) => setSinodalesPorFacultad(data)),
+
+      fetch("/api/titulaciones/dashboard/titulaciones/por_modalidad")
+        .then((response) => response.json())
+        .then((data) => setTitulacionesPorModalidad(data)),
+    ]).then(() => setLoading(false));
   }, []);
 
   return (
     <div className={styles.dashboardContainer}>
-      {/* Tabla de Alumnos */}
+      {/* Gráfico: Alumnos por Carrera */}
       <div className={styles.sectionContainer}>
-        <h2>Estudiantes</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Cuenta</th>
-            </tr>
-          </thead>
-          <tbody>
-            {alumnos.map((alumno) => (
-              <tr key={alumno._id}>
-                <td>{alumno.nombre}</td>
-                <td>{alumno.numeroCuenta}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <a href="/ucol/titulaciones/entidades/estudiantes">
-          <button className={styles.button}>Ver todos los estudiantes</button>
-        </a>
+        <h2>Distribución de Estudiantes por Carrera</h2>
+        {loading ? (
+          <TableSkeleton nHeaders={2} nRows={5} />
+        ) : (
+          <Bar
+            data={{
+              labels: Object.keys(alumnosPorCarrera),
+              datasets: [
+                {
+                  label: "Estudiantes",
+                  data: Object.values(alumnosPorCarrera),
+                  backgroundColor: "rgba(75, 192, 192, 0.2)",
+                  borderColor: "rgba(75, 192, 192, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { position: "top" },
+              },
+            }}
+          />
+        )}
       </div>
 
-      {/* Tabla de Modalidades */}
+      {/* Gráfico: Alumnos por Generación */}
+      <div className={styles.sectionContainer}>
+        <h2>Distribución de Estudiantes por Generación</h2>
+        {loading ? (
+          <TableSkeleton nHeaders={2} nRows={5} />
+        ) : (
+          <Bar
+            data={{
+              labels: Object.keys(alumnosPorGeneracion),
+              datasets: [
+                {
+                  label: "Estudiantes",
+                  data: Object.values(alumnosPorGeneracion),
+                  backgroundColor: "rgba(153, 102, 255, 0.2)",
+                  borderColor: "rgba(153, 102, 255, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { position: "top" },
+              },
+            }}
+          />
+        )}
+      </div>
+
+      {/* Gráfico: Modalidades por Tipo */}
       <div className={styles.sectionContainer}>
         <h2>Modalidades de Titulación</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Con Documento</th>
-            </tr>
-          </thead>
-          <tbody>
-            {modalidades.map((modalidad) => (
-              <tr key={modalidad._id}>
-                <td>{modalidad.nombre}</td>
-                <td>{modalidad.conDocumento ? "Sí" : "No"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <a href="/ucol/titulaciones/entidades/modalidades">
-          <button className={styles.button}>Ver todas las modalidades</button>
-        </a>
+        {loading ? (
+          <TableSkeleton nHeaders={2} nRows={5} />
+        ) : (
+          <Pie
+            data={{
+              labels: Object.keys(modalidadesPorTipo),
+              datasets: [
+                {
+                  label: "Modalidades",
+                  data: Object.values(modalidadesPorTipo),
+                  backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+                  borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { position: "top" },
+              },
+            }}
+          />
+        )}
       </div>
 
-      {/* Tabla del Comité Revisor */}
+      {/* Gráfico: Sinodales por Facultad */}
       <div className={styles.sectionContainer}>
-        <h2>Comité Revisor</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Número de Trabajador</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comite.map((miembro) => (
-              <tr key={miembro._id}>
-                <td>{miembro.nombre}</td>
-                <td>{miembro.numeroTrabajador}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <a href="/ucol/titulaciones/entidades/comite">
-          <button className={styles.button}>Ver todo el comité revisor</button>
-        </a>
+        <h2>Sinodales por Facultad</h2>
+        {loading ? (
+          <TableSkeleton nHeaders={2} nRows={5} />
+        ) : (
+          <Bar
+            data={{
+              labels: Object.keys(sinodalesPorFacultad),
+              datasets: [
+                {
+                  label: "Sinodales",
+                  data: Object.values(sinodalesPorFacultad),
+                  backgroundColor: "rgba(255, 159, 64, 0.2)",
+                  borderColor: "rgba(255, 159, 64, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { position: "top" },
+              },
+            }}
+          />
+        )}
       </div>
 
-      {/* Tabla de Sinodales */}
+      {/* Gráfico: Titulaciones por Modalidad */}
       <div className={styles.sectionContainer}>
-        <h2>Sinodales</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Rol</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sinodales.map((sinodal) => (
-              <tr key={sinodal._id}>
-                <td>{sinodal.nombre}</td>
-                <td>{sinodal.rol}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <a href="/ucol/titulaciones/entidades/sinodales">
-          <button className={styles.button}>Ver todos los sinodales</button>
-        </a>
+        <h2>Titulaciones por Modalidad</h2>
+        {loading ? (
+          <TableSkeleton nHeaders={2} nRows={5} />
+        ) : (
+          <Bar
+            data={{
+              labels: Object.keys(titulacionesPorModalidad),
+              datasets: [
+                {
+                  label: "Titulaciones",
+                  data: Object.values(titulacionesPorModalidad),
+                  backgroundColor: "rgba(255, 206, 86, 0.2)",
+                  borderColor: "rgba(255, 206, 86, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { position: "top" },
+              },
+            }}
+          />
+        )}
       </div>
     </div>
   );

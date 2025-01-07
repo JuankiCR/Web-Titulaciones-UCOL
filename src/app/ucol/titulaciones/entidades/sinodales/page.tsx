@@ -1,20 +1,13 @@
-// src/app/ucol/titulaciones/sinodales/page.tsx
 "use client";
 import React, { useState, useEffect } from "react";
+import { Sinodal as tSinodal } from '@apptypes/ucolTypes';
+import Papa from 'papaparse'; // Librería para procesar CSV
+
 import styles from "./styles.module.scss";
 
-interface Sinodal {
-  _id: string;
-  numeroTrabajador: string;
-  nombre: string;
-  carrera: string;
-  facultad: string;
-  rol: "Presidente/a" | "Secretario/a" | "Vocal";
-}
-
 export default function Sinodales() {
-  const [sinodales, setSinodales] = useState<Sinodal[]>([]);
-  const [newSinodal, setNewSinodal] = useState<Sinodal>({
+  const [sinodales, setSinodales] = useState<tSinodal[]>([]);
+  const [newSinodal, setNewSinodal] = useState<tSinodal>({
     _id: "",
     numeroTrabajador: "",
     nombre: "",
@@ -23,12 +16,12 @@ export default function Sinodales() {
     rol: "Vocal",
   });
   const [editIndex, setEditIndex] = useState<number | null>(null);
-  const [editSinodal, setEditSinodal] = useState<Sinodal | null>(null);
+  const [editSinodal, setEditSinodal] = useState<tSinodal | null>(null);
 
   useEffect(() => {
     fetch("/api/titulaciones/sinodales")
       .then((response) => response.json())
-      .then((data: Sinodal[]) => setSinodales(data));
+      .then((data: tSinodal[]) => setSinodales(data));
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -48,7 +41,7 @@ export default function Sinodales() {
     });
 
     if (response.ok) {
-      const newEntry: Sinodal = await response.json();
+      const newEntry: tSinodal = await response.json();
       setSinodales([...sinodales, newEntry]);
       setNewSinodal({
         _id: "",
@@ -88,7 +81,7 @@ export default function Sinodales() {
     });
 
     if (response.ok) {
-      const updatedSinodal: Sinodal = await response.json();
+      const updatedSinodal: tSinodal = await response.json();
       const updatedSinodales = sinodales.map((sinodal, i) =>
         i === editIndex ? updatedSinodal : sinodal
       );
@@ -103,6 +96,65 @@ export default function Sinodales() {
     if (editSinodal) {
       setEditSinodal((prev) => (prev ? { ...prev, [name]: value } : prev));
     }
+  };
+
+  // Cargar archivo CSV
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: async (results) => {
+          const parsedData: tSinodal[] = results.data as tSinodal[];
+
+          // Iteramos sobre cada sinodal y hacemos una solicitud POST para guardarlo
+          for (const sinodal of parsedData) {
+            const response = await fetch("/api/titulaciones/sinodales", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(sinodal),
+            });
+
+            if (!response.ok) {
+              console.error(`Error guardando sinodal: ${sinodal.nombre}`);
+            }
+          }
+
+          // Después de guardar todos los datos, actualizamos el estado con los nuevos datos
+          setSinodales([...sinodales, ...parsedData]);
+        },
+      });
+    }
+  };
+
+  // Descargar plantilla CSV
+  const downloadTemplate = () => {
+    const headers = ["_id", "numeroTrabajador", "nombre", "carrera", "facultad", "rol"];
+    const csvContent =
+      "data:text/csv;charset=utf-8," + headers.join(",") + "\n";
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "sinodales_template.csv");
+    document.body.appendChild(link); // Requiere para Firefox
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Descargar datos actuales como CSV
+  const downloadSinodalesData = () => {
+    const csv = Papa.unparse(sinodales); // Convierte los datos a formato CSV
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "sinodales_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -153,14 +205,35 @@ export default function Sinodales() {
           <option value="Secretario/a">Secretario/a</option>
           <option value="Vocal">Vocal</option>
         </select>
-        <button onClick={addSinodal} className={styles.button}>
+        <button onClick={addSinodal} className='primary'>
           Agregar
         </button>
       </div>
 
+      <div className={styles.dataControlsContainer}>	
+        {/* Botones para cargar CSV y descargar plantilla */}
+        <div className={styles.buttonContainer}>
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleFileUpload}
+            className={styles.inputFile}
+          />
+          <button onClick={downloadTemplate} className='secondary'>
+            Descargar Plantilla CSV
+          </button>
+        </div>
+
+        {/* Botón para descargar los datos actuales de sinodales */}
+        <div className={styles.buttonContainer}>
+          <button onClick={downloadSinodalesData} className='secondary'>
+            Descargar Datos de Sinodales
+          </button>
+        </div>
+      </div>
+      
       {/* Tabla de sinodales */}
       <div className={styles.tableContainer}>
-        <h2>Lista de Sinodales</h2>
         <table className={styles.table}>
           <thead>
             <tr>
@@ -169,7 +242,7 @@ export default function Sinodales() {
               <th>Carrera</th>
               <th>Facultad</th>
               <th>Rol</th>
-              <th>Acciones</th>
+              <th colSpan={2}>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -226,10 +299,12 @@ export default function Sinodales() {
                       </select>
                     </td>
                     <td>
-                      <button onClick={saveEditSinodal} className={styles.button}>
+                      <button onClick={saveEditSinodal} className='primary'>
                         Guardar
                       </button>
-                      <button onClick={() => setEditIndex(null)} className={styles.buttonCancel}>
+                    </td>
+                    <td>
+                      <button onClick={() => setEditIndex(null)} className='cancel'>
                         Cancelar
                       </button>
                     </td>
@@ -242,10 +317,12 @@ export default function Sinodales() {
                     <td>{sinodal.facultad}</td>
                     <td>{sinodal.rol}</td>
                     <td>
-                      <button onClick={() => startEditSinodal(index)} className={styles.button}>
+                      <button onClick={() => startEditSinodal(index)} className='primary'>
                         Editar
                       </button>
-                      <button onClick={() => deleteSinodal(sinodal._id)} className={styles.buttonCancel}>
+                    </td>
+                    <td>
+                      <button onClick={() => deleteSinodal(sinodal._id)} className='cancel'>
                         Borrar
                       </button>
                     </td>

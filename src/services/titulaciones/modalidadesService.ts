@@ -26,6 +26,9 @@ export const getModalidades = (): Modalidad[] => {
 };
 
 export const createModalidad = (nombre: string, conDocumento: boolean, maximoEstudiantes: number): Modalidad => {
+  if (!nombre) throw new Error("El nombre de la modalidad no puede estar vacío");
+  if (maximoEstudiantes <= 0) throw new Error("El número máximo de estudiantes debe ser mayor a 0");
+
   const modalidades = getModalidades();
   const newModalidad: Modalidad = {
     _id: uuidv4(),
@@ -38,24 +41,32 @@ export const createModalidad = (nombre: string, conDocumento: boolean, maximoEst
   return newModalidad;
 };
 
-export const updateModalidad = (id: string, updatedData: Partial<Modalidad>): Modalidad | null => {
+export const updateModalidad = (_id: string, updatedData: Partial<Modalidad>): Modalidad | null => {
   const modalidades = getModalidades();
-  const index = modalidades.findIndex((modalidad) => modalidad._id === id);
+  const index = modalidades.findIndex((modalidad) => modalidad._id === _id);
   if (index === -1) return null;
+
+  if (updatedData.nombre !== undefined && !updatedData.nombre) {
+    throw new Error("El nombre de la modalidad no puede estar vacío");
+  }
+  if (updatedData.maximoEstudiantes !== undefined && updatedData.maximoEstudiantes <= 0) {
+    throw new Error("El número máximo de estudiantes debe ser mayor a 0");
+  }
+
   modalidades[index] = { ...modalidades[index], ...updatedData };
   saveModalidades(modalidades);
   return modalidades[index];
 };
 
-export const deleteModalidad = (id: string): boolean => {
+export const deleteModalidad = (_id: string): boolean => {
   const modalidades = getModalidades();
-  const updatedModalidades = modalidades.filter((modalidad) => modalidad._id !== id);
+  const updatedModalidades = modalidades.filter((modalidad) => modalidad._id !== _id);
   if (modalidades.length === updatedModalidades.length) return false;
   saveModalidades(updatedModalidades);
   return true;
 };
 
-export const getModalidadById = (id: string): Modalidad | null => {
+export const getModalidadById = (_id: string): Modalidad | null => {
   const modalidades = getModalidades();
-  return modalidades.find((modalidad) => modalidad._id === id) || null;
+  return modalidades.find((modalidad) => modalidad._id === _id) || null;
 };

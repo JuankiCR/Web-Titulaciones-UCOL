@@ -17,6 +17,7 @@ const nextConfig = {
       '@components': path.resolve(__dirname, 'src/components'),
       '@services': path.resolve(__dirname, 'src/services'),
       '@data': path.resolve(__dirname, 'src/data'),
+      '@apptypes': path.resolve(__dirname, 'src/types'),
     };
 
     config.module.rules.push({

@@ -1,18 +1,322 @@
 [
   {
-    "_id": "ee6a932e-ad2d-472b-b9fd-582bb3f3b379",
-    "numeroCuenta": "20200271",
-    "nombre": "Juan Carlos Ceballos Ramirez",
+    "_id": "0b931a35-5395-45bc-9a9e-f2d65e1e8af0",
+    "numeroCuenta": "28945660",
+    "nombre": "Laura Martínez",
     "generacion": "2020-2024",
-    "carrera": "ICI",
+    "carrera": "Arquitectura",
     "facultad": "FIME"
   },
   {
-    "_id": "f67e6561-b1bf-4ca5-9f74-fad560c77a96",
-    "numeroCuenta": "20175584",
-    "nombre": "Gabriel Ochoa Pizano",
+    "_id": "e51c5437-b165-433e-8555-501018859923",
+    "numeroCuenta": "23570649",
+    "nombre": "Carlos Pérez",
+    "generacion": "2021-2025",
+    "carrera": "Ingeniería Civil",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "f6cf03b8-90c5-421c-8763-fb329c6e62ea",
+    "numeroCuenta": "28734906",
+    "nombre": "Laura Martínez",
+    "generacion": "2021-2025",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "00a222ac-fc41-452e-8d7e-1279bf32b4a8",
+    "numeroCuenta": "28676264",
+    "nombre": "Sofía Torres",
+    "generacion": "2019-2023",
+    "carrera": "Derecho",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "8d2bca8c-4329-4038-9da9-85b5f284ecf9",
+    "numeroCuenta": "27729668",
+    "nombre": "Luis García",
+    "generacion": "2022-2026",
+    "carrera": "Ingeniería Civil",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "90103b69-b12e-43ee-a7de-e6c767d223b7",
+    "numeroCuenta": "22562240",
+    "nombre": "Laura Martínez",
+    "generacion": "2022-2026",
+    "carrera": "Psicología",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "7d4a265c-fb6c-4fd4-ab2c-7d776ef1480a",
+    "numeroCuenta": "20791720",
+    "nombre": "Ana López",
+    "generacion": "2019-2023",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "9c69c907-ed07-4be8-8e61-403de56d4caf",
+    "numeroCuenta": "29478592",
+    "nombre": "María Fernández",
+    "generacion": "2021-2025",
+    "carrera": "Derecho",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "7fb1f674-6fd2-4e95-98c2-b48197855aab",
+    "numeroCuenta": "23659844",
+    "nombre": "Ana López",
+    "generacion": "2021-2025",
+    "carrera": "Ingeniería Civil",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "9be1d188-d839-4577-acd0-50dd69c88609",
+    "numeroCuenta": "29921776",
+    "nombre": "Ana López",
+    "generacion": "2022-2026",
+    "carrera": "Derecho",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "8dae52bd-5ae2-4092-8093-132918012872",
+    "numeroCuenta": "24173945",
+    "nombre": "Luis García",
+    "generacion": "2019-2023",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "41ef1e7c-951e-4b76-ab72-96c03c5df1e6",
+    "numeroCuenta": "27710064",
+    "nombre": "María Fernández",
+    "generacion": "2019-2023",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "37860710-5919-4f7f-9d2a-6534d3013091",
+    "numeroCuenta": "28539026",
+    "nombre": "Gabriela Ramírez",
+    "generacion": "2020-2024",
+    "carrera": "Psicología",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "84085cf2-3968-4a41-8093-5d440c420f70",
+    "numeroCuenta": "24975944",
+    "nombre": "Daniel Herrera",
     "generacion": "2020-2024",
     "carrera": "ICI",
-    "facultad": "\tFIME"
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "1cfd5437-04f7-48af-9d2e-6813a416d0b4",
+    "numeroCuenta": "25241662",
+    "nombre": "Gabriela Ramírez",
+    "generacion": "2020-2024",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "75524bdc-3882-4dc8-ac28-4f8b5b720b09",
+    "numeroCuenta": "28355443",
+    "nombre": "Laura Martínez",
+    "generacion": "2020-2024",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "80bed20a-db6a-442f-8041-606c24c9210e",
+    "numeroCuenta": "29444044",
+    "nombre": "Ana López",
+    "generacion": "2022-2026",
+    "carrera": "Psicología",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "ba161a68-636e-48b9-9964-31a333ba2424",
+    "numeroCuenta": "28004496",
+    "nombre": "María Fernández",
+    "generacion": "2020-2024",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "bfc58098-4986-4b91-9080-5d32c682932e",
+    "numeroCuenta": "28647995",
+    "nombre": "María Fernández",
+    "generacion": "2021-2025",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "acf884cc-2486-4c73-aac5-8f158a97e3bd",
+    "numeroCuenta": "29594514",
+    "nombre": "Jorge González",
+    "generacion": "2021-2025",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "c226fd75-2bdf-4a02-94c4-831fc606ad76",
+    "numeroCuenta": "23104291",
+    "nombre": "María Fernández",
+    "generacion": "2021-2025",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "9ea116fe-fb4e-4d65-8561-048b9441372f",
+    "numeroCuenta": "23516701",
+    "nombre": "Laura Martínez",
+    "generacion": "2022-2026",
+    "carrera": "ICI",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "fb310b06-1efd-4b54-85dc-7ffec15b6e08",
+    "numeroCuenta": "20916281",
+    "nombre": "Sofía Torres",
+    "generacion": "2019-2023",
+    "carrera": "Ingeniería Civil",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "720f3721-87e2-4a72-9584-bb5e0a2575f5",
+    "numeroCuenta": "26559334",
+    "nombre": "Daniel Herrera",
+    "generacion": "2019-2023",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "c0a53dd5-8029-45c4-922e-3f3730078b7e",
+    "numeroCuenta": "23034797",
+    "nombre": "Carlos Pérez",
+    "generacion": "2021-2025",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "76d56a5d-8253-42a5-a718-68b06fcf08a2",
+    "numeroCuenta": "29306424",
+    "nombre": "Ricardo Sánchez",
+    "generacion": "2022-2026",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "0e417476-8564-45b0-bf73-0c596eaa6e58",
+    "numeroCuenta": "28083979",
+    "nombre": "Ana López",
+    "generacion": "2021-2025",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "e7c893a5-c9aa-48c2-b3cc-7beb3d497bd9",
+    "numeroCuenta": "20160267",
+    "nombre": "Laura Martínez",
+    "generacion": "2021-2025",
+    "carrera": "ICI",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "24c7edcc-ff3b-4116-8e16-4bff21859beb",
+    "numeroCuenta": "22274276",
+    "nombre": "Laura Martínez",
+    "generacion": "2019-2023",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "dca4f283-e334-40c1-9eb9-2e3d1e35d38f",
+    "numeroCuenta": "24842670",
+    "nombre": "Sofía Torres",
+    "generacion": "2019-2023",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "b0279348-f7bf-4bef-9218-e3ecdb855791",
+    "numeroCuenta": "25128839",
+    "nombre": "Gabriela Ramírez",
+    "generacion": "2021-2025",
+    "carrera": "Psicología",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "ecdaab50-c320-4fed-858b-7932cd69042e",
+    "numeroCuenta": "23862653",
+    "nombre": "Gabriela Ramírez",
+    "generacion": "2019-2023",
+    "carrera": "Medicina",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "25e2d426-deae-444c-9921-0f3e247ab5be",
+    "numeroCuenta": "29544253",
+    "nombre": "Ricardo Sánchez",
+    "generacion": "2022-2026",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "28224edc-7c34-44d1-9668-5973d5b94c16",
+    "numeroCuenta": "29345100",
+    "nombre": "Laura Martínez",
+    "generacion": "2021-2025",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "d541b7b8-06ba-484c-b475-68820e41d6f3",
+    "numeroCuenta": "20854559",
+    "nombre": "María Fernández",
+    "generacion": "2021-2025",
+    "carrera": "ICI",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "19454dbe-5f78-42a7-9bdc-7c9511c9bda9",
+    "numeroCuenta": "27113765",
+    "nombre": "Luis García",
+    "generacion": "2021-2025",
+    "carrera": "ICI",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "2c7cce14-3e7a-490e-909c-0dfed72e5152",
+    "numeroCuenta": "29932466",
+    "nombre": "María Fernández",
+    "generacion": "2021-2025",
+    "carrera": "Arquitectura",
+    "facultad": "FIME"
+  },
+  {
+    "_id": "97023b28-2e0c-4303-9838-c89f902d0cb9",
+    "numeroCuenta": "24089286",
+    "nombre": "Sofía Torres",
+    "generacion": "2019-2023",
+    "carrera": "Ingeniería Civil",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "ffbf4dfe-f571-4ef3-9185-6a35702eee3f",
+    "numeroCuenta": "20594719",
+    "nombre": "Ana López",
+    "generacion": "2022-2026",
+    "carrera": "ICI",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "d5fb8257-11eb-472d-ab1f-6f4e39a9a654",
+    "numeroCuenta": "31211232",
+    "nombre": "Test",
+    "generacion": "2030-2034",
+    "carrera": "Nueva Carrera",
+    "facultad": "TEST"
   }
 ]

@@ -1,19 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { Alumno as tAlumno } from '@apptypes/ucolTypes';
+import Papa from 'papaparse'; // Librería para procesar CSV
+
 import styles from "./styles.module.scss";
 
-interface Student {
-  _id: string;
-  numeroCuenta: string;
-  nombre: string;
-  generacion: string;
-  carrera: string;
-  facultad: string;
-}
-
 export default function Estudiantes() {
-  const [students, setStudents] = useState<Student[]>([]);
-  const [newStudent, setNewStudent] = useState<Student>({
+  const [students, setStudents] = useState<tAlumno[]>([]);
+  const [newStudent, setNewStudent] = useState<tAlumno>({
     _id: "",
     numeroCuenta: "",
     nombre: "",
@@ -22,12 +16,12 @@ export default function Estudiantes() {
     facultad: "",
   });
   const [editIndex, setEditIndex] = useState<number | null>(null);
-  const [editStudent, setEditStudent] = useState<Student | null>(null);
+  const [editStudent, setEditStudent] = useState<tAlumno | null>(null);
 
   useEffect(() => {
     fetch("/api/titulaciones/alumnos")
       .then((response) => response.json())
-      .then((data: Student[]) => setStudents(data));
+      .then((data: tAlumno[]) => setStudents(data));
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +41,7 @@ export default function Estudiantes() {
     });
 
     if (response.ok) {
-      const newAlumno: Student = await response.json();
+      const newAlumno: tAlumno = await response.json();
       setStudents([...students, newAlumno]);
       setNewStudent({
         _id: "",
@@ -87,7 +81,7 @@ export default function Estudiantes() {
     });
 
     if (response.ok) {
-      const updatedAlumno: Student = await response.json();
+      const updatedAlumno: tAlumno = await response.json();
       const updatedStudents = students.map((student, i) =>
         i === editIndex ? updatedAlumno : student
       );
@@ -102,6 +96,65 @@ export default function Estudiantes() {
     if (editStudent) {
       setEditStudent((prev) => (prev ? { ...prev, [name]: value } : prev));
     }
+  };
+
+  // Cargar archivo CSV
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: async (results) => {
+          const parsedData: tAlumno[] = results.data as tAlumno[];
+
+          // Iteramos sobre cada estudiante y hacemos una solicitud POST para guardarlo
+          for (const student of parsedData) {
+            const response = await fetch("/api/titulaciones/alumnos", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(student),
+            });
+
+            if (!response.ok) {
+              console.error(`Error guardando estudiante: ${student.nombre}`);
+            }
+          }
+
+          // Después de guardar todos los datos, actualizamos el estado con los nuevos datos
+          setStudents([...students, ...parsedData]);
+        },
+      });
+    }
+  };
+
+  // Descargar plantilla CSV
+  const downloadTemplate = () => {
+    const headers = ["_id", "numeroCuenta", "nombre", "generacion", "carrera", "facultad"];
+    const csvContent =
+      "data:text/csv;charset=utf-8," + headers.join(",") + "\n";
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "estudiantes_template.csv");
+    document.body.appendChild(link); // Requiere para Firefox
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Descargar datos actuales como CSV
+  const downloadStudentsData = () => {
+    const csv = Papa.unparse(students); // Convierte los datos a formato CSV
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "estudiantes_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -150,14 +203,33 @@ export default function Estudiantes() {
           placeholder="Facultad"
           className={styles.input}
         />
-        <button onClick={addStudent} className={styles.button}>
+        <button onClick={addStudent} className='primary'>
           Agregar
         </button>
       </div>
+      <div className={styles.dataControlsContainer}>	
+        {/* Botones para cargar CSV y descargar plantilla */}
+        <div className={styles.buttonContainer}>
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleFileUpload}
+            className={styles.inputFile}
+          />
+          <button onClick={downloadTemplate} className='secondary'>
+            Descargar Plantilla CSV
+          </button>
+        </div>
 
+        {/* Botón para descargar los datos actuales de los estudiantes */}
+        <div className={styles.buttonContainer}>
+          <button onClick={downloadStudentsData} className='secondary'>
+            Descargar Datos de Estudiantes
+          </button>
+        </div>
+      </div>
       {/* Tabla de estudiantes */}
       <div className={styles.tableContainer}>
-        <h2>Lista de Estudiantes</h2>
         <table className={styles.table}>
           <thead>
             <tr>
@@ -166,7 +238,7 @@ export default function Estudiantes() {
               <th>Generación</th>
               <th>Carrera</th>
               <th>Facultad</th>
-              <th>Acciones</th>
+              <th colSpan={2}>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -220,10 +292,12 @@ export default function Estudiantes() {
                       />
                     </td>
                     <td>
-                      <button onClick={saveEditStudent} className={styles.button}>
+                      <button onClick={saveEditStudent} className='primary'>
                         Guardar
                       </button>
-                      <button onClick={() => setEditIndex(null)} className={styles.buttonCancel}>
+                    </td>
+                    <td>
+                      <button onClick={() => setEditIndex(null)} className='cancel'>
                         Cancelar
                       </button>
                     </td>
@@ -236,10 +310,12 @@ export default function Estudiantes() {
                     <td>{student.carrera}</td>
                     <td>{student.facultad}</td>
                     <td>
-                      <button onClick={() => startEditStudent(index)} className={styles.button}>
+                      <button onClick={() => startEditStudent(index)} className='primary'>
                         Editar
                       </button>
-                      <button onClick={() => deleteStudent(student._id)} className={styles.buttonCancel}>
+                    </td>
+                    <td>
+                      <button onClick={() => deleteStudent(student._id)} className='cancel'>
                         Borrar
                       </button>
                     </td>

@@ -1,9 +1,72 @@
 [
   {
-    "_id": "9206b5d0-c15d-47f6-8b29-8772b07fe29f",
-    "numeroTrabajador": "20200271",
-    "nombre": "Juan Carlos Ceballos ",
-    "carrera": "ICI",
-    "facultad": "FIME"
+    "_id": "11567ddf-9773-404c-816a-5ef30aa11ae3",
+    "numeroTrabajador": "8634",
+    "nombre": "Paula Moreno Test",
+    "carrera": "Ingeniería de Sistemas",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "c8372a2b-55d2-4a27-b6e7-6e1f95b5792d",
+    "numeroTrabajador": "7360",
+    "nombre": "David Gómez",
+    "carrera": "Derecho",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "97328cae-4420-4636-9d23-89e759dc06d9",
+    "numeroTrabajador": "1710",
+    "nombre": "Juan López",
+    "carrera": "Psicología",
+    "facultad": "Facultad de Derecho"
+  },
+  {
+    "_id": "7527db84-c059-4e10-b5ad-cc023919758c",
+    "numeroTrabajador": "4162",
+    "nombre": "Pedro Sánchez",
+    "carrera": "Ingeniería de Sistemas",
+    "facultad": "Facultad de Arquitectura"
+  },
+  {
+    "_id": "8ac3f922-72c9-4a25-a56b-da98b9ae1e00",
+    "numeroTrabajador": "3385",
+    "nombre": "David Gómez",
+    "carrera": "Medicina",
+    "facultad": "Facultad de Arquitectura"
+  },
+  {
+    "_id": "df599273-6818-4509-8a25-38d88f5725a9",
+    "numeroTrabajador": "9088",
+    "nombre": "Paula Moreno",
+    "carrera": "Ingeniería de Sistemas",
+    "facultad": "Facultad de Medicina"
+  },
+  {
+    "_id": "60036dee-eb6e-47f3-9568-d396517fabb3",
+    "numeroTrabajador": "3785",
+    "nombre": "David Gómez",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "822668c8-ce23-4fe5-a030-64a97d592b67",
+    "numeroTrabajador": "7676",
+    "nombre": "Luis Martínez",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Ingeniería"
+  },
+  {
+    "_id": "b42a7246-1f4e-4893-b6a8-ffe7f28349ee",
+    "numeroTrabajador": "2793",
+    "nombre": "Pedro Sánchez",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Psicología"
+  },
+  {
+    "_id": "57ead99e-317e-4487-8a93-39508ace347c",
+    "numeroTrabajador": "3211",
+    "nombre": "David Gómez",
+    "carrera": "Arquitectura",
+    "facultad": "Facultad de Arquitectura"
   }
 ]

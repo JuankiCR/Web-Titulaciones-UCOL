@@ -1,20 +1,13 @@
-// src/app/ucol/titulaciones/comite/page.tsx
 "use client";
 import React, { useState, useEffect } from "react";
+import { Comite as tComite } from '@apptypes/ucolTypes';
+import Papa from 'papaparse';
 
 import styles from "./styles.module.scss";
 
-interface Comite {
-  _id: string;
-  numeroTrabajador: string;
-  nombre: string;
-  carrera: string;
-  facultad: string;
-}
-
 export default function Comite() {
-  const [comite, setComite] = useState<Comite[]>([]);
-  const [newComite, setNewComite] = useState<Comite>({
+  const [comite, setComite] = useState<tComite[]>([]);
+  const [newComite, setNewComite] = useState<tComite>({
     _id: "",
     numeroTrabajador: "",
     nombre: "",
@@ -22,12 +15,12 @@ export default function Comite() {
     facultad: "",
   });
   const [editIndex, setEditIndex] = useState<number | null>(null);
-  const [editMember, setEditMember] = useState<Comite | null>(null);
+  const [editMember, setEditMember] = useState<tComite | null>(null);
 
   useEffect(() => {
     fetch("/api/titulaciones/comite")
       .then((response) => response.json())
-      .then((data: Comite[]) => setComite(data));
+      .then((data: tComite[]) => setComite(data));
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +40,7 @@ export default function Comite() {
     });
 
     if (response.ok) {
-      const newMember: Comite = await response.json();
+      const newMember: tComite = await response.json();
       setComite([...comite, newMember]);
       setNewComite({
         _id: "",
@@ -86,7 +79,7 @@ export default function Comite() {
     });
 
     if (response.ok) {
-      const updatedMember: Comite = await response.json();
+      const updatedMember: tComite = await response.json();
       const updatedComite = comite.map((member, i) =>
         i === editIndex ? updatedMember : member
       );
@@ -101,6 +94,62 @@ export default function Comite() {
     if (editMember) {
       setEditMember((prev) => (prev ? { ...prev, [name]: value } : prev));
     }
+  };
+
+  // Cargar archivo CSV
+const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    Papa.parse(file, {
+      header: true,
+      skipEmptyLines: true,
+      complete: async (results) => {
+        const parsedData: tComite[] = results.data as tComite[];
+
+        for (const member of parsedData) {
+          const response = await fetch("/api/titulaciones/comite", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(member),
+          });
+
+          if (!response.ok) {
+            console.error(`Error guardando miembro: ${member.nombre}`);
+          }
+        }
+        setComite((prevComite) => [...prevComite, ...parsedData]);
+      },
+    });
+  }
+};
+
+  // Descargar plantilla CSV
+  const downloadTemplate = () => {
+    const headers = ["_id", "numeroTrabajador", "nombre", "carrera", "facultad"];
+    const csvContent =
+      "data:text/csv;charset=utf-8," + headers.join(",") + "\n";
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "comite_template.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Descargar datos actuales como CSV
+  const downloadComiteData = () => {
+    const csv = Papa.unparse(comite); 
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "comite_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -141,14 +190,39 @@ export default function Comite() {
           placeholder="Facultad"
           className={styles.input}
         />
-        <button onClick={addMember} className={styles.button}>
+        <button onClick={addMember} className='primary'>
           Agregar
         </button>
       </div>
 
+      <div className={styles.dataControlsContainer}>	
+        {/* Botones para cargar CSV y descargar plantilla */}
+        <div>
+          <h2>Importar datos desde csv.</h2>
+          <div className={styles.buttonContainer}>
+            <input
+              type="file"
+              accept=".csv"
+              onChange={handleFileUpload}
+              className={styles.inputFile}
+            />
+            <button onClick={downloadTemplate} className='secondary'>
+              Descargar Plantilla CSV
+            </button>
+          </div>
+        </div>
+
+        {/* Botón para descargar los datos actuales del comité */}
+        <div className={styles.buttonContainer}>
+          <h2>Exportar datos a csv.</h2>
+          <button onClick={downloadComiteData} className='secondary'>
+            Descargar Datos del Comité
+          </button>
+        </div>
+      </div>
+
       {/* Tabla de comité */}
       <div className={styles.tableContainer}>
-        <h2>Lista del Comité Revisor</h2>
         <table className={styles.table}>
           <thead>
             <tr>
@@ -156,7 +230,7 @@ export default function Comite() {
               <th>Nombre</th>
               <th>Carrera</th>
               <th>Facultad</th>
-              <th>Acciones</th>
+              <th colSpan={2}>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -201,10 +275,12 @@ export default function Comite() {
                       />
                     </td>
                     <td>
-                      <button onClick={saveEditMember} className={styles.button}>
+                      <button onClick={saveEditMember} className='primary'>
                         Guardar
                       </button>
-                      <button onClick={() => setEditIndex(null)} className={styles.buttonCancel}>
+                    </td>
+                    <td>
+                      <button onClick={() => setEditIndex(null)} className='cancel'>
                         Cancelar
                       </button>
                     </td>
@@ -216,10 +292,12 @@ export default function Comite() {
                     <td>{member.carrera}</td>
                     <td>{member.facultad}</td>
                     <td>
-                      <button onClick={() => startEditMember(index)} className={styles.button}>
+                      <button onClick={() => startEditMember(index)} className='primary'>
                         Editar
                       </button>
-                      <button onClick={() => deleteMember(member._id)} className={styles.buttonCancel}>
+                    </td>
+                    <td>
+                      <button onClick={() => deleteMember(member._id)} className='cancel'>
                         Borrar
                       </button>
                     </td>

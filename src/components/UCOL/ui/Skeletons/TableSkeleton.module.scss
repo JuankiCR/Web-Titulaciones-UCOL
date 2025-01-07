@@ -1,0 +1,59 @@
+// GeneralSkeleton.module.scss
+.tableSkeletonContainer {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      tr {
+        th {
+          height: 40px;
+          background-color: #f5f8ea;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          height: 40px;
+          background-color: #e0e0e0;
+          position: relative;
+          overflow: hidden;
+        }
+
+        &:nth-child(odd) td {
+          background-color: #f0f0f0;
+        }
+
+        &:nth-child(even) td {
+          background-color: #e0e0e0;
+        }
+
+        td::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -150px;
+          height: 100%;
+          width: 150px;
+          background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+          animation: shimmer 1.5s infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(600%);
+  }
+}
