@@ -1,0 +1,38 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px;
+
+  .title {
+    font-size: 8rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+  }
+  
+  .message {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #555;
+  }
+  
+  button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+

@@ -1,0 +1,48 @@
+[
+  {
+    "_id": "f4489a9a-f14e-4d68-96f7-203f8c336e0c",
+    "name": "Facultad de Ingeniería Mecánica y Eléctrica",
+    "alias": "FIME",
+    "careers": [
+      {
+        "_id": "9a687f5d-060e-4d83-b1cd-ebfccaa0e666",
+        "name": "Ingeniería en Computación Inteligente",
+        "alias": "ICI"
+      },
+      {
+        "_id": "df7c5883-15f4-4cf3-8cde-4439c0640d35",
+        "name": "Ingeniería en Mecánico Electricista",
+        "alias": "IME"
+      },
+      {
+        "_id": "a3db0ea8-cfe7-4182-aabb-fe6836abc7c2",
+        "name": "Ingeniería en Mecatrónica",
+        "alias": "IM"
+      }
+    ]
+  },
+  {
+    "_id": "3e1d21aa-e900-4db7-a77a-74e5aff85368",
+    "name": "Facultad de Arquitectura y Diseño",
+    "alias": "FAyD",
+    "careers": [
+      {
+        "_id": "7eae7d23-9d12-4363-bbea-6be5404a0564",
+        "name": "Licenciatura en Diseño",
+        "alias": "LD"
+      }
+    ]
+  },
+  {
+    "_id": "ddec9819-9b15-4414-9c80-d4272387c049",
+    "name": "Test",
+    "alias": "AS",
+    "careers": [
+      {
+        "_id": "7e066735-cb13-4f83-a431-c94a89341519",
+        "name": "Ingeniería en Mecatrónica",
+        "alias": "IM"
+      }
+    ]
+  }
+]

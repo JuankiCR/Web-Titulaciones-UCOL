@@ -1,17 +1,29 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { jwtDecode } from 'jwt-decode';
 
 import FormCard from '@components/Cards/FormCard/FormCard';
 
+import RedirectByRole from '@/utils/RedirectByRole/RedirectByRole';
+import useUserStore from '@/store/ucol/userStore';
+
 import styles from './page.module.scss';
+
+interface JwtPayload {
+  exp: number;
+}
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const user = useUserStore((state) => state.user);
+  const [authToken, setAuthToken] = useState<string | null>(null);
+  const setUser = useUserStore((state) => state.setUser);
+  const setSeeYouName = useUserStore((state) => state.setSeeYouName);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +36,18 @@ export default function LoginPage() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
+        if (data.user.status != 'VERIFIED') {
+          alert('Tu cuenta aún no ha sido verificada. Por favor, espera a que un administrador la apruebe.');
+          return;
+        }
+
+        setUser(data.user);
+        setSeeYouName(data.user.name);
         localStorage.setItem('authToken', data.token);
-        console.log('Usuario autenticado:', data.user);
-        router.push('/ucol/titulaciones/dashboard');
+
+        RedirectByRole({ role: data.user.role, navigate: router.push });
+        window.location.reload();
       } else {
         const errorData = await response.json();
         setError(errorData.message);
@@ -35,6 +56,47 @@ export default function LoginPage() {
       setError('Hubo un error al intentar iniciar sesión. Por favor, intenta nuevamente.');
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    setAuthToken(token);
+
+    const handlePopState = () => {
+      history.pushState(null, '', window.location.href);
+    };
+
+    handlePopState();
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!authToken || !user) {
+      router.push('/login');
+      return;
+    }
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(authToken);
+      const currentTime = Date.now() / 1000;
+
+      if (decoded.exp < currentTime) {
+        localStorage.removeItem('authToken');
+        router.push('/login');
+        return;
+      }
+
+      RedirectByRole({ role: user.role, navigate: router.push });
+    } catch {
+      localStorage.removeItem('authToken');
+      router.push('/login');
+    }
+  }, [router, authToken, user]);
+
+  
 
   return (
     <FormCard>

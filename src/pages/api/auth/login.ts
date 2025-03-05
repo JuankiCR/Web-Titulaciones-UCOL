@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const { user, token } = await authenticateUser(email, password);
-    return res.status(200).json({ message: 'Autenticación exitosa', token, user: { email: user.email, name: user.name, lastName: user.lastName } });
+    return res.status(200).json({ message: 'Autenticación exitosa', token, user: { email: user.email, name: user.name, lastName: user.lastName, status: user.status, role: user.role, faculty: user.facultyId } });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return res.status(401).json({ message: errorMessage });

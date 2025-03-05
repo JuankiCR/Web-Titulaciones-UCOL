@@ -4,6 +4,10 @@
     "email": "juankicr@rbduck.com",
     "password": "$2b$10$4QH0WATYlcuQivpSFK6jV.F8IVHCIpNUibeLspZDfzySTcHSZVWUO",
     "name": "Juan Carlos",
-    "lastName": "Ceballos Ramirez"
+    "lastName": "Ceballos Ramirez",
+    "role": "ADMIN",
+    "status": "VERIFIED",
+    "facultyId": "",
+    "careerId": ""
   }
 ]

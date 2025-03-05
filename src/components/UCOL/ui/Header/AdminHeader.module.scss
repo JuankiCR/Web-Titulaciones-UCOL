@@ -1,0 +1,79 @@
+
+.headerContainer{
+  align-items: center;
+  background-color: var(--admin-header-bg);
+  color: var(--admin-header-text);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 4rem;
+  position: sticky;
+  top: 0;
+
+  .navContainer{
+    ul{
+      display: flex;
+      font-weight: 600;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+
+      li{
+        margin: 0 1rem;
+
+        a{
+          transition: all 0.3s ease;
+          color: var(--admin-foreground);
+          text-decoration: none;
+
+          &:hover,
+          &.active,
+          &:focus,
+          &:active,
+          &:visited{
+            color: var(--admin-foreground);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .userContainer{
+    .userAvatar{
+      position: relative;
+      user-select: none;
+
+      .userMenu{
+        transition: 
+          max-height 1s ease,
+          background-color 0.3s ease,
+          border 0.3s ease,
+          padding 0.3s ease,
+          color 0.3s ease
+        ;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 8px 0 8px 8px;
+        color: transparent;
+        overflow: hidden;
+        padding: 0;
+        pointer-events: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 8px;
+        white-space: nowrap;
+        max-height: 0px;
+  
+        &.show{
+          background-color: var(--admin-background);
+          border: 1px solid var(--admin-foreground);
+          color: var(--admin-foreground);
+          padding: .5rem 1rem;
+          pointer-events: all;
+          max-height: 500px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --admin-background: #131924;
+  --admin-header-bg: #0074d9;
+  --admin-foreground: #f5f5f5;
+  --admin-header-text: #f5f5f5;
+
+  --admin-input-bg: #6b6b6b;
+
+  --admin-accent: #0074d9;
+  --admin-accent-alt: #f4c542;
+  
+  --admin-btn-hover: #005bb5;
+  --admin-btn-hover-alt: #d4a017;
+  --admin-error: #e63946;
+}
+
+body {
+  background-color: var(--admin-background);
+  color: var(--admin-foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.ucolMainContainer {
+  background-color: var(--admin-background);
+  color: var(--admin-foreground);
+  overflow: auto;
+}
+
+/* ########## Inputs ########## */
+/* Selects */
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid var(--admin-accent);
+  background-color: var(--admin-input-bg);
+  color: var(--admin-foreground);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+select:hover {
+  background-color: var(--admin-input-bg);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid var(--admin-accent);
+  background-color: var(--admin-input-bg);
+  color: var(--admin-foreground);
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: var(--admin-btn-hover);
+  outline: none;
+  box-shadow: 0 0 5px var(--admin-btn-hover);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Files */
+input[type="file"] {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid var(--admin-accent);
+  background-color: var(--admin-input-bg);
+  color: var(--admin-foreground);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: var(--admin-btn-hover-alt);
+}
+
+/* ########## Botones ########## */
+.button-primary {
+  width: 100%;
+  transition: all 0.3s ease;
+  color: var(--admin-foreground);
+  background-color: var(--admin-accent);
+  border: 1px solid var(--admin-accent);
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background-color: var(--admin-btn-hover);
+}
+
+.button-secondary {
+  width: 100%;
+  transition: all 0.3s ease;
+  color: var(--admin-foreground);
+  background-color: var(--admin-accent-alt);
+  border: 1px solid var(--admin-accent-alt);
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background-color: var(--admin-btn-hover-alt);
+}
+
+.button-cancel {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--admin-error);
+  color: var(--admin-foreground);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-cancel:hover {
+  background-color: #c1272d;
+}
+
+/* ########## Tablas ######### */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: var(--admin-background);
+  color: var(--admin-foreground);
+  border-color: var(--admin-accent);
+}
+
+table th {
+  padding: 12px;
+  background-color: var(--admin-accent-alt);
+  color: var(--admin-foreground);
+  border: 1px solid var(--admin-accent);
+  text-align: left;
+}
+
+table td {
+  padding: 12px;
+  border: 1px solid var(--admin-accent);
+  overflow: hidden;
+  text-align: left;
+}
+
+table tr:nth-child(even) {
+  background-color: #2c2c2e;
+}
+
+/* ########## Desplegables ######### */
+details {
+  background-color: var(--admin-background);
+  border: 1px solid var(--admin-accent);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--admin-foreground);
+}
+
+details[open] summary {
+  color: var(--admin-accent-alt);
+}
+
+details ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+/* ########## Utilities ########## */
+@layer utilities {
+  .text-balance-admin {
+    text-wrap: balance;
+  }
+}

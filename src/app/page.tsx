@@ -1,10 +1,13 @@
-"use client";
+'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { jwtDecode } from 'jwt-decode';
 
 import Loader from '@components/Loader/Loader';
+
+import RedirectByRole from '@/utils/RedirectByRole/RedirectByRole';
+import useUserStore from '@/store/ucol/userStore';
 
 interface JwtPayload {
   exp: number;
@@ -12,11 +15,16 @@ interface JwtPayload {
 
 export default function Home() {
   const router = useRouter();
+  const user = useUserStore((state) => state.user);
+  const [authToken, setAuthToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const authToken = localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken');
+    setAuthToken(token);
+  }, []);
 
-    if (!authToken) {
+  useEffect(() => {
+    if (!authToken || !user) {
       router.replace('/login');
       return;
     }
@@ -30,12 +38,13 @@ export default function Home() {
         router.replace('/login');
         return;
       }
-      router.replace('/ucol/titulaciones/dashboard');
+
+      RedirectByRole({ role: user.role, navigate: router.replace });
     } catch {
       localStorage.removeItem('authToken');
       router.replace('/login');
     }
-  }, [router]);
+  }, [router, authToken, user]);
 
   return <Loader />;
 }
